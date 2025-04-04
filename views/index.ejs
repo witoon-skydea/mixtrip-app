@@ -1,0 +1,211 @@
+<%- include('layout', {
+    title: 'MixTrip - Travel Route Planning',
+    body: `
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Plan Your Dream Trip Journey</h1>
+                        <p class="hero-text">
+                            Create, share, and explore amazing travel routes with MixTrip. Discover new destinations and plan your perfect adventure.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="/register" class="btn btn-primary btn-lg">Get Started</a>
+                            <a href="/explore" class="btn btn-outline-light btn-lg ms-3">Explore Routes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <img src="https://placehold.co/600x400/3498db/FFF?text=Travel+Routes" alt="Travel Routes" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">How MixTrip Works</h2>
+                <p class="section-description">Plan your trips with ease and share your experiences with others</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Create Routes</h3>
+                        <p class="feature-text">
+                            Design your perfect travel route with daily activities, points of interest, and custom notes.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Share & Explore</h3>
+                        <p class="feature-text">
+                            Share your routes with friends or the community. Discover and explore routes from other travelers.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <h3 class="feature-title">Remix Routes</h3>
+                        <p class="feature-text">
+                            Like someone else's route? Remix it to create your own version tailored to your preferences.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="destinations-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Popular Destinations</h2>
+                <p class="section-description">Explore some of the most popular travel destinations and routes</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="https://placehold.co/800x600/e74c3c/FFF?text=Tokyo" alt="Tokyo" class="img-fluid">
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Tokyo, Japan</h3>
+                            <p class="destination-stats">
+                                <span><i class="fas fa-route"></i> 145 routes</span>
+                                <span><i class="fas fa-star"></i> 4.8</span>
+                            </p>
+                            <a href="/explore?destination=tokyo" class="btn btn-sm btn-outline-primary">Explore Routes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="https://placehold.co/800x600/27ae60/FFF?text=Paris" alt="Paris" class="img-fluid">
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">Paris, France</h3>
+                            <p class="destination-stats">
+                                <span><i class="fas fa-route"></i> 132 routes</span>
+                                <span><i class="fas fa-star"></i> 4.7</span>
+                            </p>
+                            <a href="/explore?destination=paris" class="btn btn-sm btn-outline-primary">Explore Routes</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="destination-card">
+                        <div class="destination-image">
+                            <img src="https://placehold.co/800x600/f39c12/FFF?text=New+York" alt="New York" class="img-fluid">
+                        </div>
+                        <div class="destination-content">
+                            <h3 class="destination-title">New York, USA</h3>
+                            <p class="destination-stats">
+                                <span><i class="fas fa-route"></i> 118 routes</span>
+                                <span><i class="fas fa-star"></i> 4.6</span>
+                            </p>
+                            <a href="/explore?destination=new-york" class="btn btn-sm btn-outline-primary">Explore Routes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="/explore" class="btn btn-primary">Discover More Destinations</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">What Our Users Say</h2>
+                <p class="section-description">Read what travelers think about MixTrip</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"MixTrip made planning our family vacation so much easier. We found amazing routes that we wouldn't have discovered otherwise!"</p>
+                        </div>
+                        <div class="testimonial-user">
+                            <div class="testimonial-avatar">
+                                <img src="https://placehold.co/100x100/3498db/FFF?text=JS" alt="User" class="img-fluid rounded-circle">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">John Smith</h4>
+                                <p class="testimonial-title">Family Traveler</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"I love how easy it is to remix other travelers' routes and customize them to fit my travel style. It's like having a personal travel agent!"</p>
+                        </div>
+                        <div class="testimonial-user">
+                            <div class="testimonial-avatar">
+                                <img src="https://placehold.co/100x100/e74c3c/FFF?text=EJ" alt="User" class="img-fluid rounded-circle">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">Emily Johnson</h4>
+                                <p class="testimonial-title">Solo Traveler</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"As a travel blogger, MixTrip has become an essential tool for me. I can plan, share, and collaborate on routes with my audience."</p>
+                        </div>
+                        <div class="testimonial-user">
+                            <div class="testimonial-avatar">
+                                <img src="https://placehold.co/100x100/27ae60/FFF?text=DK" alt="User" class="img-fluid rounded-circle">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4 class="testimonial-name">David Kim</h4>
+                                <p class="testimonial-title">Travel Blogger</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content text-center">
+                <h2 class="cta-title">Ready to Start Your Adventure?</h2>
+                <p class="cta-text">Join thousands of travelers who are discovering and sharing amazing routes around the world.</p>
+                <a href="/register" class="btn btn-lg btn-primary">Sign Up for Free</a>
+                <p class="cta-small">Already have an account? <a href="/login">Login here</a></p>
+            </div>
+        </div>
+    </section>
+    `,
+    scripts: `
+    <script>
+        console.log('Home page loaded');
+    </script>
+    `
+}) %>

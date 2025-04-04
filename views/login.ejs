@@ -1,0 +1,142 @@
+<%- include('layout', {
+    title: 'Login - MixTrip',
+    body: `
+    <!-- Login Section -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="auth-card">
+                        <div class="auth-header text-center">
+                            <h1 class="auth-title">Welcome Back</h1>
+                            <p class="auth-subtitle">Log in to continue your journey</p>
+                        </div>
+                        
+                        <div class="alert alert-danger d-none" id="error-message" role="alert">
+                            <!-- Error messages will be displayed here -->
+                        </div>
+                        
+                        <form id="login-form" class="auth-form">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                    <button class="btn btn-outline-secondary toggle-password" type="button">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <div class="text-end mt-1">
+                                    <a href="/forgot-password" class="small">Forgot password?</a>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4 form-check">
+                                <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                                <label class="form-check-label" for="remember">Remember me</label>
+                            </div>
+                            
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg" id="login-button">
+                                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                    Login
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div class="auth-footer text-center mt-4">
+                            <p>Don't have an account? <a href="/register">Sign up</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    `,
+    scripts: `
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('login-form');
+            const errorMessage = document.getElementById('error-message');
+            const loginButton = document.getElementById('login-button');
+            const spinner = loginButton.querySelector('.spinner-border');
+            
+            // Toggle password visibility
+            document.querySelector('.toggle-password').addEventListener('click', function() {
+                const input = this.previousElementSibling;
+                const icon = this.querySelector('i');
+                
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+            
+            // Form submission
+            loginForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Clear previous errors
+                errorMessage.classList.add('d-none');
+                errorMessage.textContent = '';
+                
+                // Disable button and show spinner
+                loginButton.disabled = true;
+                spinner.classList.remove('d-none');
+                
+                try {
+                    const response = await fetch('/api/auth/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email: document.getElementById('email').value,
+                            password: document.getElementById('password').value
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (!response.ok) {
+                        throw new Error(data.message || 'Login failed');
+                    }
+                    
+                    // Save token to localStorage
+                    localStorage.setItem('token', data.token);
+                    
+                    // If remember me is checked, save for longer expiry
+                    if (document.getElementById('remember').checked) {
+                        // This can be handled server-side with longer expiry tokens
+                        localStorage.setItem('remember', 'true');
+                    }
+                    
+                    // Redirect to dashboard or home
+                    window.location.href = '/dashboard';
+                    
+                } catch (error) {
+                    errorMessage.textContent = error.message;
+                    errorMessage.classList.remove('d-none');
+                    
+                    // Re-enable button and hide spinner
+                    loginButton.disabled = false;
+                    spinner.classList.add('d-none');
+                }
+            });
+        });
+    </script>
+    `
+}) %>
